@@ -8,11 +8,12 @@ import org.junit.Test;
 
 public class AppTest {
 
-   private Http http;
+   private String res;
     public AppTest(){
         try {
-			http = new Http("https:ikiosk24.de");
+			Http http = new Http("https:ikiosk24.de");
 			http.excutePost();
+		res = http.getResult();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -21,8 +22,7 @@ public class AppTest {
     @Test
     public void shouldAnswerWithTrue()
     {
-    	String res = http.getResult();
-    	boolean ifTrue = (res != null && res.length() > 2) : false;
+    	boolean ifTrue = res != null && res.length() > 2;
         assertTrue( ifTrue );
     }
 
